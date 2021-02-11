@@ -16,6 +16,66 @@ class SignUp(generic.CreateView):
     success_url = reverse_lazy('login')
     template_name = '/registration/signup.html'
 
+def prepDataAndPlot(energy):
+    data = []
+
+    for item in energy:
+        temp = []
+        temp.append(item.day_date)
+        temp.append(item.calorie_intake)
+        temp.append(item.calorie_burnt)
+        temp.append(item.hours_slept)
+        temp.append(item.heart_rate)
+        data.append(temp)
+
+    dates = []
+    calorie_intake = []
+    calorie_burnt = []
+    heart_rate = []
+    hours_slept = []
+    data.sort()
+
+    for i in range(len(data)):
+        dates.append(i)
+        calorie_intake.append(data[i][1])
+        calorie_burnt.append(data[i][2])
+        hours_slept.append(data[i][3])
+        heart_rate.append(data[i][4])
+
+    fig = plt.figure()
+    plt.plot(dates, calorie_intake, label ='Intake') 
+    plt.plot(dates, calorie_burnt, label ='Burnt')
+    plt.title("Understanding Your Calories")  # add title  
+    plt.legend() 
+  
+    imgdata = io.StringIO()
+    fig.savefig(imgdata, format="svg")
+    imgdata.seek(0)
+    calorie_data = imgdata.getvalue()
+
+    fig = plt.figure()
+    plt.plot(dates, hours_slept, label="Hours Slept") 
+    plt.title("Understanding Your Sleep Cycle")  # add title  
+    plt.legend() 
+  
+    imgdata = io.StringIO()
+    fig.savefig(imgdata, format="svg")
+    imgdata.seek(0)
+    sleep_data = imgdata.getvalue()
+
+    fig = plt.figure()
+    plt.plot(dates, heart_rate, label="Heart Beats Per Minute") 
+    plt.title("Understanding your Heart Rate")  # add title  
+    plt.legend() 
+  
+    imgdata = io.StringIO()
+    fig.savefig(imgdata, format="svg")
+    imgdata.seek(0)
+    heart_data = imgdata.getvalue()
+
+    return calorie_burnt, calorie_intake, calorie_data, hours_slept, sleep_data, heart_rate, heart_data
+
+
 def goals(request):
     if request.method == "POST":
         form = GoalForm(request.POST)
@@ -75,62 +135,7 @@ def energy_analysis(request):
     except:
         energy = []
 
-    data = []
-
-    for item in energy:
-        temp = []
-        temp.append(item.day_date)
-        temp.append(item.calorie_intake)
-        temp.append(item.calorie_burnt)
-        temp.append(item.hours_slept)
-        temp.append(item.heart_rate)
-        data.append(temp)
-
-    dates = []
-    calorie_intake = []
-    calorie_burnt = []
-    heart_rate = []
-    hours_slept = []
-    data.sort()
-
-    for i in range(len(data)):
-        dates.append(i)
-        calorie_intake.append(data[i][1])
-        calorie_burnt.append(data[i][2])
-        hours_slept.append(data[i][3])
-        heart_rate.append(data[i][4])
-
-    fig = plt.figure()
-    plt.plot(dates, calorie_intake, label ='Intake') 
-    plt.plot(dates, calorie_burnt, label ='Burnt')
-    plt.title("Understanding Your Calories")  # add title  
-    plt.legend() 
-  
-    imgdata = io.StringIO()
-    fig.savefig(imgdata, format="svg")
-    imgdata.seek(0)
-    calorie_data = imgdata.getvalue()
-
-    fig = plt.figure()
-    plt.plot(dates, hours_slept, label="Hours Slept") 
-    plt.title("Understanding Your Sleep Cycle")  # add title  
-    plt.legend() 
-  
-    imgdata = io.StringIO()
-    fig.savefig(imgdata, format="svg")
-    imgdata.seek(0)
-    sleep_data = imgdata.getvalue()
-
-    fig = plt.figure()
-    plt.plot(dates, heart_rate, label="Heart Beats Per Minute") 
-    plt.title("Understanding your Heart Rate")  # add title  
-    plt.legend() 
-  
-    imgdata = io.StringIO()
-    fig.savefig(imgdata, format="svg")
-    imgdata.seek(0)
-    heart_data = imgdata.getvalue()
-
+    calorie_burnt, calorie_intake, calorie_data, hours_slept, sleep_data, heart_rate, heart_data = prepDataAndPlot(energy)
 
     context = {
                  "form" : EnergyForm(),
@@ -145,3 +150,6 @@ def energy_analysis(request):
 
     
     return render(request, "profile/energy_analysis.html", context)
+
+def workout(request):
+    pass

@@ -38,7 +38,7 @@
 <p> Current BMI {{ current_bmi }} </p>
 <p> Ideal BMI: {{ ideal_bmi }} </p>
 
-<form action="/accounts/profile/goals/" method="post">
+<form action="/accounts/profile/workout/" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Submit">
