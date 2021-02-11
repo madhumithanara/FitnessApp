@@ -2,8 +2,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
 from django.shortcuts import render
-from .models import Goal
-from .forms import GoalForm
+from .models import Goal, Energy
+from .forms import GoalForm, EnergyForm
 
 
 class SignUp(generic.CreateView):
@@ -51,5 +51,34 @@ def goals(request):
     
     return render(request, "profile/goals.html", context)
 
-def calorie_counter(request):
-    pass
+def energy_analysis(request):
+    if request.method == "POST":
+        form = EnergyForm(request.POST)
+        if form.is_valid():
+            user = request.user
+            energy = Energy(user=user)
+            energy.calorie_intake = form.cleaned_data["calorie_intake"]
+            energy.calorie_burnt = form.cleaned_data["calorie_burnt"]
+            energy.hours_slept = form.cleaned_data["hours_slept"]
+            energy.heart_rate = form.cleaned_data["heart_rate"]
+            energy.save()
+
+    user = request.user
+    energy = None
+    try:
+        energy = Energy.objects.get(user=user)
+    except:
+        energy = None
+
+
+    # context = {"ideal_height": goal.ideal_height, 
+    #              "ideal_weight": goal.ideal_weight, 
+    #              "current_height": goal.current_height, 
+    #              "current_weight": goal.current_weight,
+    #              "ideal_bmi": ideal_bmi,
+    #              "current_bmi": current_bmi,
+    #              "form" : GoalForm()
+    #              }
+
+    
+    return render(request, "profile/energy_analysis.html", context)

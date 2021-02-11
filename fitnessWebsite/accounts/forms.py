@@ -51,9 +51,12 @@ class GoalForm(BasicForm):
     setup_field(ideal_weight, "Ideal Weight in kg")
 
 
-class CalorieForm(BasicForm):
+class EnergyForm(BasicForm):
     calorie_intake = forms.DecimalField(label='Calories Intake', min_value=0)
     setup_field(calorie_intake, "Calories Eaten Today")
     calorie_burnt = forms.DecimalField(label='Calories Burnt', min_value=0)
     setup_field(calorie_burnt, "Calories Burnt Today")
-    # resting_heart_rate = forms.
+    heart_rate = forms.DecimalField(label='Resting Heart Rate', min_value=0)
+    setup_field(heart_rate, "Average Resting Heart Rate Today")
+    hours_slept = forms.DecimalField(label='Hours Slept', min_value=0)
+    setup_field(calorie_burnt, "Number of Hours Slept Today")

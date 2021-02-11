@@ -5,7 +5,15 @@ from django.contrib.auth.models import User
 
 class Goal(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    current_weight = models.IntegerField(default=1)
-    current_height = models.IntegerField(default=1)
-    ideal_weight = models.IntegerField(default=1)
-    ideal_height = models.IntegerField(default=1)
+    current_weight = models.DecimalField(default=1, decimal_places=2, max_digits=6)
+    current_height = models.DecimalField(default=1, decimal_places=2, max_digits=6)
+    ideal_weight = models.DecimalField(default=1, decimal_places=2, max_digits=6)
+    ideal_height = models.DecimalField(default=1, decimal_places=2, max_digits=6)
+
+class Energy(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    calorie_intake = models.DecimalField(default=1, decimal_places=2, max_digits=6)
+    calorie_burnt = models.DecimalField(default=1, decimal_places=2, max_digits=6)
+    heart_rate = models.DecimalField(default=1, decimal_places=2, max_digits=6)
+    hours_slept = models.DecimalField(default=1, decimal_places=2, max_digits=6)
+    submitted_at = models.DateTimeField(auto_now=True)
