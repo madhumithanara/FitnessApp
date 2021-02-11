@@ -59,4 +59,4 @@ class EnergyForm(BasicForm):
     heart_rate = forms.DecimalField(label='Resting Heart Rate', min_value=0)
     setup_field(heart_rate, "Average Resting Heart Rate Today")
     hours_slept = forms.DecimalField(label='Hours Slept', min_value=0)
-    setup_field(calorie_burnt, "Number of Hours Slept Today")
+    setup_field(hours_slept, "Number of Hours Slept Today")

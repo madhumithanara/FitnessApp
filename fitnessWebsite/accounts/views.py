@@ -4,6 +4,9 @@ from django.views import generic
 from django.shortcuts import render
 from .models import Goal, Energy
 from .forms import GoalForm, EnergyForm
+import matplotlib.pyplot as plt
+import numpy as np
+import io
 
 
 class SignUp(generic.CreateView):
@@ -66,19 +69,53 @@ def energy_analysis(request):
     user = request.user
     energy = None
     try:
-        energy = Energy.objects.get(user=user)
+        energy = Energy.objects.filter(user=user)
     except:
-        energy = None
+        energy = []
 
-    context = {}
-    # context = {"ideal_height": goal.ideal_height, 
-    #              "ideal_weight": goal.ideal_weight, 
-    #              "current_height": goal.current_height, 
-    #              "current_weight": goal.current_weight,
-    #              "ideal_bmi": ideal_bmi,
-    #              "current_bmi": current_bmi,
-    #              "form" : GoalForm()
-    #              }
+    data = []
+
+    for item in energy:
+        temp = []
+        temp.append(item.day_date)
+        temp.append(item.calorie_intake)
+        temp.append(item.calorie_burnt)
+        temp.append(item.hours_slept)
+        temp.append(item.heart_rate)
+        data.append(temp)
+
+    dates = []
+    calorie_intake = []
+    calorie_burnt = []
+    heart_rate = []
+    hours_slept = []
+    data.sort()
+
+    for i in range(len(data)):
+        dates.append(i)
+        calorie_intake.append(data[i][1])
+        calorie_burnt.append(data[i][2])
+        heart_rate.append(data[i][3])
+        hours_slept.append(data[i][4])
+
+    fig = plt.figure()
+    plt.plot(dates, calorie_intake, label ='Intake') 
+    plt.plot(dates, calorie_burnt, label ='Burnt') 
+    plt.title("Understanding Your Calories")  # add title  
+    plt.legend() 
+  
+    imgdata = io.StringIO()
+    fig.savefig(imgdata, format="svg")
+    imgdata.seek(0)
+    data = imgdata.getvalue()
+
+    
+
+
+    context = {
+                 "form" : EnergyForm(),
+                 "graph": data
+                }
 
     
     return render(request, "profile/energy_analysis.html", context)

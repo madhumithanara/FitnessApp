@@ -34,9 +34,7 @@
     }
 </style>
 
-
-<p> Current BMI {{ current_bmi }} </p>
-<p> Ideal BMI: {{ ideal_bmi }} </p>
+{{ graph|safe }}
 
 <form action="/accounts/profile/goals/" method="post">
     {% csrf_token %}
