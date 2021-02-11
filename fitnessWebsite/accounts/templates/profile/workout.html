@@ -31,12 +31,15 @@
 
     p{
         margin: 20px 20px 20px 20px;
+        text-align:center;
     }
+
+
 </style>
 
-
-<p> Current BMI {{ current_bmi }} </p>
-<p> Ideal BMI: {{ ideal_bmi }} </p>
+<p>
+<iframe width="800" height="500"  src= {{ url }} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
 
 <form action="/accounts/profile/workout/" method="post">
     {% csrf_token %}

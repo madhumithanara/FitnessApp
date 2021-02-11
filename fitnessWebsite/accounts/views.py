@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.shortcuts import render
 from .models import Goal, Energy
-from .forms import GoalForm, EnergyForm
+from .forms import GoalForm, EnergyForm, VideoRecommendForm
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MaxNLocator
 import numpy as np
@@ -152,4 +152,48 @@ def energy_analysis(request):
     return render(request, "profile/energy_analysis.html", context)
 
 def workout(request):
-    pass
+    url = "https://www.youtube.com/embed/BHY0FxzoKZE"
+    if request.method == "POST":
+        form = VideoRecommendForm(request.POST)
+        if form.is_valid():
+            user = request.user
+            exercise_type = form.cleaned_data["exercise_type"]
+            exercise_duration = form.cleaned_data["exercise_duration"]
+            exercise_complexity = form.cleaned_data["exercise_complexity"]
+
+            if exercise_type == "Yoga":
+                if exercise_duration == 30:
+                    if exercise_complexity == "Easy":
+                        url = "https://www.youtube.com/embed/6hZIzMpHl-c"
+                    elif exercise_complexity == "Intermediate":
+                        url = "https://www.youtube.com/embed/Z6jRKThDCBU"
+                    elif exercise_complexity == "Advanced":
+                        url = "https://www.youtube.com/embed/X5fP_YS6olU"
+                elif exercise_duration == 60:
+                    if exercise_complexity == "Easy":
+                        url = "https://www.youtube.com/embed/9ZRvdbG54H4"
+                    elif exercise_complexity == "Intermediate":
+                        url = "https://www.youtube.com/embed/K0H7gLahXEs"
+                    elif exercise_complexity == "Advanced":
+                        url = "https://www.youtube.com/embed/v6oE5zNbt1c"
+            elif exercise_type == "Zumba":
+                if exercise_duration == 30:
+                    if exercise_complexity == "Easy":
+                        url = "https://www.youtube.com/embed/-UqOkg4NBd4"
+                    elif exercise_complexity == "Intermediate":
+                        url = "https://www.youtube.com/embed/QRZcZgSgSHI"
+                    elif exercise_complexity == "Advanced":
+                        url = "https://www.youtube.com/embed/qAJ6EQtGZ28"
+                elif exercise_duration == 60:
+                    if exercise_complexity == "Easy":
+                        url = "https://www.youtube.com/embed/zeG50oaDx84"
+                    elif exercise_complexity == "Intermediate":
+                        url = "https://www.youtube.com/embed/qFkkn5NC4-E"
+                    elif exercise_complexity == "Advanced":
+                        url = "https://www.youtube.com/embed/aQmTfTQBaIQ"
+    context = {
+        "form": VideoRecommendForm(),
+        "url": url
+    }
+    
+    return render(request, "profile/workout.html", context)
