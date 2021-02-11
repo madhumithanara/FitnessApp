@@ -49,3 +49,5 @@ class GoalForm(BasicForm):
     setup_field(ideal_height, "Ideal Height in cm")
     ideal_weight = forms.CharField(label='Ideal Weight', min_length=1, max_length=10)
     setup_field(ideal_weight, "Ideal Weight in kg")
+
+

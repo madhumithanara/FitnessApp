@@ -28,15 +28,25 @@ def goals(request):
             goal.save()
 
     user = request.user
+    goal = None
     try:
         goal = Goal.objects.get(user=user)
     except:
-        goal = Goal(user=user, ideal_height=0, ideal_weight=0, current_weight=0, current_height=0)
+        goal = Goal(user=user, ideal_height=1, ideal_weight=1, current_weight=1, current_height=1)
         goal.save()
+
+    #calculation of bmi: bmi = kg/m^2
+    ideal_bmi = round(goal.ideal_weight/((goal.ideal_height/100)**2), 2)
+    current_bmi = round(goal.current_weight/((goal.current_height/100)**2), 2)
+
     context = {"ideal_height": goal.ideal_height, 
                  "ideal_weight": goal.ideal_weight, 
                  "current_height": goal.current_height, 
                  "current_weight": goal.current_weight,
+                 "ideal_bmi": ideal_bmi,
+                 "current_bmi": current_bmi,
                  "form" : GoalForm()
                  }
+
+    
     return render(request, "profile/goals.html", context)
