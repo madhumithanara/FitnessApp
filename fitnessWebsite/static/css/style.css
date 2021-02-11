@@ -156,3 +156,36 @@ footer
 .btn-hover.color-11 {
      background-image: linear-gradient(to right, #eb3941, #f15e64, #e14e53, #e2373f);  box-shadow: 0 5px 15px rgba(242, 97, 103, .4);
 }
+
+.ul-menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.li-menu {
+  float: left;
+}
+
+.li-a-menu {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+.li-a-menu:hover {
+  background-color: #111;
+}
+
+.li-a-menu:active {
+  background-color: #111;
+}
+
+.li-a-menu:focus {
+  background-color: #111;
+}
