@@ -41,13 +41,19 @@ def setup_field(field, placeholder=None):
 
 class GoalForm(BasicForm):
 
-    current_height = forms.CharField(label='Current Height', min_length=1, max_length=10)
+    current_height = forms.DecimalField(label='Current Height', min_value=0)
     setup_field(current_height, "Current Height in cm")
-    current_weight = forms.CharField(label='Current Weight', min_length=1, max_length=10)
+    current_weight = forms.DecimalField(label='Current Weight', min_value=0)
     setup_field(current_weight, "Current Weight in kg")
-    ideal_height = forms.CharField(label='Ideal Height', min_length=1, max_length=10)
+    ideal_height = forms.DecimalField(label='Ideal Height', min_value=0)
     setup_field(ideal_height, "Ideal Height in cm")
-    ideal_weight = forms.CharField(label='Ideal Weight', min_length=1, max_length=10)
+    ideal_weight = forms.DecimalField(label='Ideal Weight', min_value=0)
     setup_field(ideal_weight, "Ideal Weight in kg")
 
 
+class CalorieForm(BasicForm):
+    calorie_intake = forms.DecimalField(label='Calories Intake', min_value=0)
+    setup_field(calorie_intake, "Calories Eaten Today")
+    calorie_burnt = forms.DecimalField(label='Calories Burnt', min_value=0)
+    setup_field(calorie_burnt, "Calories Burnt Today")
+    # resting_heart_rate = forms.

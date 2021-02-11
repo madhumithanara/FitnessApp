@@ -50,3 +50,6 @@ def goals(request):
 
     
     return render(request, "profile/goals.html", context)
+
+def calorie_counter(request):
+    pass
