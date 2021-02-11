@@ -5,8 +5,10 @@ from django.shortcuts import render
 from .models import Goal, Energy
 from .forms import GoalForm, EnergyForm
 import matplotlib.pyplot as plt
+from matplotlib.ticker import MaxNLocator
 import numpy as np
 import io
+from statistics import mean
 
 
 class SignUp(generic.CreateView):
@@ -95,26 +97,50 @@ def energy_analysis(request):
         dates.append(i)
         calorie_intake.append(data[i][1])
         calorie_burnt.append(data[i][2])
-        heart_rate.append(data[i][3])
-        hours_slept.append(data[i][4])
+        hours_slept.append(data[i][3])
+        heart_rate.append(data[i][4])
 
     fig = plt.figure()
     plt.plot(dates, calorie_intake, label ='Intake') 
-    plt.plot(dates, calorie_burnt, label ='Burnt') 
+    plt.plot(dates, calorie_burnt, label ='Burnt')
     plt.title("Understanding Your Calories")  # add title  
     plt.legend() 
   
     imgdata = io.StringIO()
     fig.savefig(imgdata, format="svg")
     imgdata.seek(0)
-    data = imgdata.getvalue()
+    calorie_data = imgdata.getvalue()
 
-    
+    fig = plt.figure()
+    plt.plot(dates, hours_slept, label="Hours Slept") 
+    plt.title("Understanding Your Sleep Cycle")  # add title  
+    plt.legend() 
+  
+    imgdata = io.StringIO()
+    fig.savefig(imgdata, format="svg")
+    imgdata.seek(0)
+    sleep_data = imgdata.getvalue()
+
+    fig = plt.figure()
+    plt.plot(dates, heart_rate, label="Heart Beats Per Minute") 
+    plt.title("Understanding your Heart Rate")  # add title  
+    plt.legend() 
+  
+    imgdata = io.StringIO()
+    fig.savefig(imgdata, format="svg")
+    imgdata.seek(0)
+    heart_data = imgdata.getvalue()
 
 
     context = {
                  "form" : EnergyForm(),
-                 "graph": data
+                 "calorie_graph": calorie_data,
+                 "sleep_graph": sleep_data,
+                 "heart_graph": heart_data,
+                 "intake_data": mean(calorie_intake),
+                 "burnt_data": mean(calorie_burnt),
+                 "sleep_data": mean(hours_slept),
+                 "heart_data": mean(heart_rate)
                 }
 
     
