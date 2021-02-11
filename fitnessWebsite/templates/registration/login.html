@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+  <div>
+      <ul class="ul_top">
+
+  		<li class="li_top title_top" ><a href="/">FitnessApp <i class="fa fa-heartbeat"></i></a></li>
+
+      <li style="float:right">&nbsp;&nbsp;&nbsp;&nbsp;</li>
+
+  		<li class="li_top box" style="float:right"><button class="btn-hover color-2"><a href="{% url 'login' %}">Login</a></button></li>
+
+      <li style="float:right">&nbsp;&nbsp;&nbsp;&nbsp;</li>
+
+      <li class="li_top box" style="float:right"><button class="btn-hover color-3"><a href="{% url 'signup' %}">Sign up</a></button></li>
+
+	</ul>
+  </div>
+
+
+
+<div class ="profile" style="text-align: center;font-size:4em;">
+<h2>Login</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Login</button>
+</form>    
+</div>
+{% endblock %}
