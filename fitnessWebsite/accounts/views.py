@@ -70,7 +70,7 @@ def energy_analysis(request):
     except:
         energy = None
 
-
+    context = {}
     # context = {"ideal_height": goal.ideal_height, 
     #              "ideal_weight": goal.ideal_weight, 
     #              "current_height": goal.current_height, 

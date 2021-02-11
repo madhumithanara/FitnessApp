@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<ul class="ul_top">
+
+    <li class="li_top title_top" ><a href="/">FitnessApp <i class="fa fa-heartbeat"></i></a></li>
+
+    <li style="float:right">&nbsp;&nbsp;&nbsp;&nbsp;</li>
+
+    <li class="li_top box" style="float:right"><button class="btn-hover color-2"><a href="{% url 'logout' %}">Log out</a></button></li>
+
+<li style="float:right">&nbsp;&nbsp;&nbsp;&nbsp;</li>
+
+
+</ul>
+
+<ul class= "ul-menu">
+<li class = "li-menu"><a class="li-a-menu" href="">Home</a></li>
+<li class = "li-menu"><a class="li-a-menu" href="{% url 'accounts:profile/goals' %}">Health Goals</a></li>
+<li class = "li-menu"><a class="li-a-menu" href="{% url 'accounts:profile/energy_analysis' %}">Energy Analysis</a></li>
+<li class = "li-menu"><a class="li-a-menu" href="">Start a Workout</a></li>
+<li class = "li-menu"><a class="li-a-menu" href="">Doctors and Medication</a></li>
+<li class = "li-menu"><a class="li-a-menu" href="">Health Cycles</a></li>
+</ul>
+
+<style>
+    form{
+        margin: 20px 20px 20px 20px;
+    }
+
+    p{
+        margin: 20px 20px 20px 20px;
+    }
+</style>
+
+
+<p> Current BMI {{ current_bmi }} </p>
+<p> Ideal BMI: {{ ideal_bmi }} </p>
+
+<form action="/accounts/profile/goals/" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock %}
