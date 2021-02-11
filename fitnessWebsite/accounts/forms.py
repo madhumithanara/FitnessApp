@@ -41,11 +41,11 @@ def setup_field(field, placeholder=None):
 
 class GoalForm(BasicForm):
 
-    current_height = forms.CharField(label='current_height', min_length=1, max_length=10)
+    current_height = forms.CharField(label='Current Height', min_length=1, max_length=10)
     setup_field(current_height, "Current Height in cm")
-    current_weight = forms.CharField(label='current_weight', min_length=1, max_length=10)
+    current_weight = forms.CharField(label='Current Weight', min_length=1, max_length=10)
     setup_field(current_weight, "Current Weight in kg")
-    ideal_height = forms.CharField(label='ideal_height', min_length=1, max_length=10)
+    ideal_height = forms.CharField(label='Ideal Height', min_length=1, max_length=10)
     setup_field(ideal_height, "Ideal Height in cm")
-    ideal_weight = forms.CharField(label='ideal_weight', min_length=1, max_length=10)
+    ideal_weight = forms.CharField(label='Ideal Weight', min_length=1, max_length=10)
     setup_field(ideal_weight, "Ideal Weight in kg")

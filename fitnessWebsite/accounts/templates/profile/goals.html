@@ -1,5 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <ul class="ul_top">
+
+  		<li class="li_top title_top" ><a href="/">FitnessApp <i class="fa fa-heartbeat"></i></a></li>
+
+  		<li style="float:right">&nbsp;&nbsp;&nbsp;&nbsp;</li>
+
+  		<li class="li_top box" style="float:right"><button class="btn-hover color-2"><a href="{% url 'logout' %}">Log out</a></button></li>
+
+      <li style="float:right">&nbsp;&nbsp;&nbsp;&nbsp;</li>
+
+	</ul>
+
+  <ul class= "ul-menu">
+    <li class = "li-menu"><a class="li-a-menu" href="">Home</a></li>
+    <li class = "li-menu"><a class="li-a-menu" href="accounts/profile/goals">Health Goals</a></li>
+    <li class = "li-menu"><a class="li-a-menu" href="">Calorie Counter</a></li>
+    <li class = "li-menu"><a class="li-a-menu" href="">Start a Workout</a></li>
+    <li class = "li-menu"><a class="li-a-menu" href="">Doctors and Medication</a></li>
+    <li class = "li-menu"><a class="li-a-menu" href="">Health Cycles</a></li>
+  </ul>
+
 <form action="/accounts/profile/goals/" method="post">
     {% csrf_token %}
-    {{ form }}
+    {{ form.as_p }}
     <input type="submit" value="Submit">
 </form>
+
+{% endblock %}
