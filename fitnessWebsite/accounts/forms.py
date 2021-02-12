@@ -65,3 +65,7 @@ class VideoRecommendForm(BasicForm):
     exercise_type = forms.CharField(label="What kind of workout are you looking for?", widget=forms.Select(choices=[("Yoga","Yoga"),("Zumba","Zumba")]))
     exercise_duration = forms.IntegerField(label="How many minutes you be working out for?", widget=forms.Select(choices=[(30,30),(60,60)]))
     exercise_complexity = forms.CharField(label="What level of workout are you looking for?", widget=forms.Select(choices=[("Easy","Easy"),("Intermediate","Intermediate"),("Advanced","Advanced")]))
+
+class CycleForm(BasicForm):
+    start_date = forms.DateTimeField(label="Enter Start Date (MM/DD/YYYY)")
+    end_date = forms.DateTimeField(label="Enter End Date (MM/DD/YYYY)")

@@ -19,3 +19,9 @@ class Energy(models.Model):
     heart_rate = models.DecimalField(default=1, decimal_places=2, max_digits=6)
     hours_slept = models.DecimalField(default=1, decimal_places=2, max_digits=6)
     day_date = models.DateTimeField(default=now, editable=True)
+
+class Cycle(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    start_date = models.DateTimeField(default=now, editable=True)
+    end_date = models.DateTimeField(default=now, editable=True)
+

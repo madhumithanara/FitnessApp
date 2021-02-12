@@ -25,28 +25,53 @@
 </ul>
 
 <style>
-    form{
+    table{
         margin: 20px 20px 20px 20px;
     }
 
     p{
         margin: 20px 20px 20px 20px;
     }
+
+    th{
+        vertical-align: top;
+    }
+
+    td{
+        vertical-align: top;
+    }
+
+    img
+    {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+    }
 </style>
 
-<p> Average Calories Intake: {{ intake_data }}</p>
-<p> Average Calories Burnt: {{ burnt_data }}</p>
-<p> Average Hours Slept: {{ sleep_data }} hours</p>
-<p> Average Resting Heart Rate: {{ heart_data }} beats per minute</p>
+<p> Your next cycle starts: {{ next_period_date }}</p>
+<p> Your average cycle duration is: {{ avg_cycle_duration }} days</p>
 
-{{ calorie_graph|safe }}
-{{ heart_graph|safe }}
-{{ sleep_graph|safe }}
+<img src= "{% static "img/menstrualcycle.jpg" %}" alt="Menstrual Cycle Explained" >
+ <table style="width:100%" margin="">
+     <tr>
+         <th> Previous Dates</th>
+         <th><form action="/accounts/profile/cycle/" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Submit">
+        </form></th>
+     </tr>
 
-<form action="/accounts/profile/energy_analysis/" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit">
-</form>
+     {% for date in dates %}
+     <tr> 
+         <td>{{ date }}</td> 
+    </tr>
+    {% endfor %}
+
+ </table>
+
+
 
 {% endblock %}

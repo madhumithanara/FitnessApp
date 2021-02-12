@@ -2,14 +2,14 @@ from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
 from django.shortcuts import render
-from .models import Goal, Energy
-from .forms import GoalForm, EnergyForm, VideoRecommendForm
+from .models import Goal, Energy, Cycle
+from .forms import GoalForm, EnergyForm, VideoRecommendForm, CycleForm
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MaxNLocator
 import numpy as np
 import io
 from statistics import mean
-
+import datetime
 
 class SignUp(generic.CreateView):
     form_class = UserCreationForm
@@ -197,3 +197,59 @@ def workout(request):
     }
     
     return render(request, "profile/workout.html", context)
+
+def cycle(request):
+    if request.method == "POST":
+        form = CycleForm(request.POST)
+        if form.is_valid():
+            user = request.user
+            cycle = Cycle(user=user)
+            cycle.start_date = form.cleaned_data["start_date"]
+            cycle.end_date = form.cleaned_data["end_date"]
+            cycle.save()
+            
+    user = request.user
+    cycle = None
+    try:
+        cycle = Cycle.objects.filter(user=user)
+    except:
+        cycle = []
+    
+    data = []
+
+    for item in cycle:
+        temp = []
+        temp.append(item.start_date)
+        temp.append(item.end_date)
+        data.append(temp)
+
+    data.sort()
+
+    avg_cycle_duration = 0
+
+    if len(data)>=2:
+        for i in range(len(data)-1):
+            dt = data[i+1][0] - data[i][0]
+            avg_cycle_duration += dt.days
+
+    avg_cycle_duration = avg_cycle_duration//(len(data))
+
+    next_period_date = data[-1][0] + datetime.timedelta(days=avg_cycle_duration)
+    next_period_date = next_period_date.strftime("%A") + " " + next_period_date.strftime("%d") + " " + next_period_date.strftime("%B") + ", " + next_period_date.strftime("%Y")
+
+    pretty_dates = []
+    for i in range(len(data)):
+        data[i][0] = data[i][0].strftime("%A") + " " + data[i][0].strftime("%d") + " " + data[i][0].strftime("%B") + ", " + data[i][0].strftime("%Y")
+        pretty_dates.append(data[i][0])
+
+    print(pretty_dates)
+
+    context = {
+                 "form" : CycleForm(),
+                 "avg_cycle_duration": avg_cycle_duration,
+                 "next_period_date": next_period_date,
+                 "dates": pretty_dates
+            }
+
+    
+    return render(request, "profile/cycle.html", context)
