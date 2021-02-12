@@ -49,24 +49,24 @@
     }
 </style>
 
-<p style="font-size: large"> Your next cycle starts: {{ next_period_date }}</p>
-<p style="font-size: large"> Your average cycle duration is: {{ avg_cycle_duration }} days</p>
+<p style="font-size: xx-large"> Your next cycle starts: {{ next_period_date }}</p>
+<p style="font-size: xx-large"> Your average cycle duration is: {{ avg_cycle_duration }} days</p>
 
 {% if stage == "menstrual" %}
-<p style="font-size: large"> Your current stage: Menstrual <br/>The menstrual phase starts the moment you get your period and typically lasts up to five days. During this time, your uterus sheds its lining through your vagina and you need a tampon or sanitary pad to absorb it. </p>
+<p style="font-size: xx-large"> Your current stage: Menstrual <br/>The menstrual phase starts the moment you get your period and typically lasts up to five days. During this time, your uterus sheds its lining through your vagina and you need a tampon or sanitary pad to absorb it. </p>
 {% elif stage == "follicular" %}
-<p style="font-size: large;">Your current stage: Follicular <br/>Next, the follicular phase usually occurs during days six through 14 of your cycle. Your estrogen levels rise, causing the endometrium to get thicker. FSH levels also rise, causing maturation of several ovarian follicles, one of which will produce a fully mature egg during days 10 to 14.</p>
+<p style="font-size: xx-large;">Your current stage: Follicular <br/>Next, the follicular phase usually occurs during days six through 14 of your cycle. Your estrogen levels rise, causing the endometrium to get thicker. FSH levels also rise, causing maturation of several ovarian follicles, one of which will produce a fully mature egg during days 10 to 14.</p>
 {% elif stage == "ovulation" %}
-<p style="font-size: large;">Your current stage: Ovulation <br/>Around day 14, in a 28-day cycle, LH levels surge causing ovulation. This means one of the mature follicles burst and released the fully mature egg into one of the fallopian tubes.</p>
+<p style="font-size: xx-large;">Your current stage: Ovulation <br/>Around day 14, in a 28-day cycle, LH levels surge causing ovulation. This means one of the mature follicles burst and released the fully mature egg into one of the fallopian tubes.</p>
 {% elif stage == "luteal" %}
-<p style="font-size: large;">Your current stage: Luteal <br/>The fourth stage, called the premenstrual or luteal phase, lasts approximately 14 days. The egg travels through the fallopian tube to the uterus. If it's fertilized by a sperm, you get pregnant. If not, progesterone and estrogen levels decline, and the endometrial lining flows out as your period.</p>
+<p style="font-size: xx-large;">Your current stage: Luteal <br/>The fourth stage, called the premenstrual or luteal phase, lasts approximately 14 days. The egg travels through the fallopian tube to the uterus. If it's fertilized by a sperm, you get pregnant. If not, progesterone and estrogen levels decline, and the endometrial lining flows out as your period.</p>
 {% endif %}
 
 <img src= "{% static "img/menstrualcycle.jpg" %}" alt="Menstrual Cycle Explained" >
  <table style="width:100%" margin="">
      <tr>
          <th> Previous Dates</th>
-         <th><form action="/accounts/profile/cycle/" method="post">
+         <th><form style="font-size: xx-large;" action="/accounts/profile/cycle/" method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <input type="submit" class="btn-hover color-1" value="Submit">
