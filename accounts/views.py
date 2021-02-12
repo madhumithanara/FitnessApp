@@ -10,6 +10,22 @@ import numpy as np
 import io
 from statistics import mean
 import datetime
+from random import randint
+
+goal_quotes = [
+    "It is not enough to take steps which may someday lead to a goal; each step must be itself a goal and a step likewise. -  Johann Wolfgang Von Goethe",
+    "Without dreams and goals there is no living, only merely existing, and that is not why we are here. - Mark Twain",
+    "My goal is not to be better than anyone else, but to be better than I used to be. - Wayne Dyer",
+    "I think goals should never be easy. They should force you to work, even if they are uncomfortable at the time. - Michael Phelps",
+    "A dream written down with a date becomes a goal. A goal broken down into steps becomes a plan. A plan backed by action makes your dreams come true."
+    ]
+workout_quotes = [
+    "The last three or four reps is what makes the muscle grow. This area of pain divides a champion from someone who is not a champion. - — Arnold Schwarzenegger, seven-time Mr. Olympia",
+    "All progress takes place outside the comfort zone",
+    "Whether you think you can, or you think you can’t, you’re right. - Henry Ford",
+    "The clock is ticking. Are you becoming the person you want to be?",
+    "You have to think it before you can do it. The mind is what makes it all possible"
+    ]
 
 class SignUp(generic.CreateView):
     form_class = UserCreationForm
@@ -104,13 +120,16 @@ def goals(request):
     ideal_bmi = round(goal.ideal_weight/((goal.ideal_height/100)**2), 2)
     current_bmi = round(goal.current_weight/((goal.current_height/100)**2), 2)
 
+    quote_num = randint(0,4)
+
     context = {"ideal_height": goal.ideal_height, 
                  "ideal_weight": goal.ideal_weight, 
                  "current_height": goal.current_height, 
                  "current_weight": goal.current_weight,
                  "ideal_bmi": ideal_bmi,
                  "current_bmi": current_bmi,
-                 "form" : GoalForm()
+                 "form" : GoalForm(),
+                 "quote": goal_quotes[quote_num]
                  }
 
     
@@ -201,9 +220,14 @@ def workout(request):
                         url = "https://www.youtube.com/embed/qFkkn5NC4-E"
                     elif exercise_complexity == "Advanced":
                         url = "https://www.youtube.com/embed/aQmTfTQBaIQ"
+    
+    quote_num = randint(0,4)
+
+    
     context = {
         "form": VideoRecommendForm(),
-        "url": url
+        "url": url,
+        "quote": workout_quotes[quote_num]
     }
     
     return render(request, "profile/workout.html", context)

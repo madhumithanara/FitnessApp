@@ -37,10 +37,14 @@
 <p> Current BMI {{ current_bmi }} </p>
 <p> Ideal BMI: {{ ideal_bmi }} </p>
 
+<img src= "{% static "img/bmi.jpg" %}" alt="Menstrual Cycle Explained" >
+
 <form action="/accounts/profile/goals/" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" class="btn-hover color-6" value="Submit">
 </form>
+
+<p style="text-align: center;"><i>{{ quote }}</i></p>
 
 {% endblock %}
