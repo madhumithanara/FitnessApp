@@ -5,9 +5,7 @@
 
 
 <p align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+
 
   <h3 align="center">FitnessAppMadhu</h3>
 
@@ -51,10 +49,10 @@
   </ol>
 </details>
 
-<!-- 
-[![Product Name Screen Shot][product-screenshot]](https://example.com) -->
-<!-- Add image/video here -->
+
 ## About The Project
+
+  ![image](https://drive.google.com/uc?export=view&id=1y3i5TTj_efi4Rd_yI3V4-DGqA9jZ8_FG)
 
 There are many great apps that cater to fitness. But, I believe this app is truly 360.
 
