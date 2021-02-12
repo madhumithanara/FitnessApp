@@ -136,6 +136,16 @@ def energy_analysis(request):
         energy = []
 
     calorie_burnt, calorie_intake, calorie_data, hours_slept, sleep_data, heart_rate, heart_data = prepDataAndPlot(energy)
+    
+    if calorie_intake == []:
+        calorie_intake = [0]
+    if calorie_burnt == []:
+        calorie_burnt = [0]
+    if hours_slept == []:
+        hours_slept = [0]
+    if heart_rate == []:
+        heart_rate = [0]
+
 
     context = {
                  "form" : EnergyForm(),
@@ -226,21 +236,24 @@ def cycle(request):
     data.sort()
 
     avg_cycle_duration = 0
+    next_period_date = 0
+    pretty_dates = []
 
     if len(data)>=2:
         for i in range(len(data)-1):
             dt = data[i+1][0] - data[i][0]
             avg_cycle_duration += dt.days
 
-    avg_cycle_duration = avg_cycle_duration//(len(data))
+    if len(data)>0:
+        avg_cycle_duration = avg_cycle_duration//(len(data))
 
-    next_period_date = data[-1][0] + datetime.timedelta(days=avg_cycle_duration)
-    next_period_date = next_period_date.strftime("%A") + " " + next_period_date.strftime("%d") + " " + next_period_date.strftime("%B") + ", " + next_period_date.strftime("%Y")
+        next_period_date = data[-1][0] + datetime.timedelta(days=avg_cycle_duration)
+        next_period_date = next_period_date.strftime("%A") + " " + next_period_date.strftime("%d") + " " + next_period_date.strftime("%B") + ", " + next_period_date.strftime("%Y")
 
-    pretty_dates = []
-    for i in range(len(data)):
-        data[i][0] = data[i][0].strftime("%A") + " " + data[i][0].strftime("%d") + " " + data[i][0].strftime("%B") + ", " + data[i][0].strftime("%Y")
-        pretty_dates.append(data[i][0])
+    
+        for i in range(len(data)):
+            data[i][0] = data[i][0].strftime("%A") + " " + data[i][0].strftime("%d") + " " + data[i][0].strftime("%B") + ", " + data[i][0].strftime("%Y")
+            pretty_dates.append(data[i][0])
 
 
     context = {
