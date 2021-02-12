@@ -278,7 +278,7 @@ def cycle(request):
             data[i][0] = data[i][0].strftime("%A") + " " + data[i][0].strftime("%d") + " " + data[i][0].strftime("%B") + ", " + data[i][0].strftime("%Y")
             pretty_dates.append(data[i][0])
 
-    today_date = datetime.datetime.now()
+    today_date = datetime.datetime.now(datetime.timezone.utc)
     dt = today_date - last_period_date
     stage = None
     if dt.days <= 5:
