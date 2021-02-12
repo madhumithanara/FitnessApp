@@ -1,9 +1,5 @@
 # FitnessApp
 
-
-YouTube video: https://youtu.be/06Gaq2v74UQ
-
-
 <p align="center">
 
 
@@ -15,11 +11,15 @@ YouTube video: https://youtu.be/06Gaq2v74UQ
     <a href="https://github.com/madhumithanara/FitnessApp"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://fitness-app-by-madhu.herokuapp.com/">View Demo</a>
+    <a href="https://fitness-app-by-madhu.herokuapp.com/">View WebApp</a>
     ·
+    <a href = "https://youtu.be/06Gaq2v74UQ">View Walkthrough Video</a>
+    .
     <a href="https://github.com/madhumithanara/FitnessApp/issues">Report Bug</a>
     ·
     <a href="https://github.com/madhumithanara/FitnessApp/issues">Request Feature</a>
+    
+  
   </p>
 </p>
 
