@@ -262,33 +262,44 @@ def cycle(request):
     avg_cycle_duration = 0
     next_period_date = 0
     pretty_dates = []
+    stage = None
 
-    last_period_date = data[-1][0]
+    last_period_date = 0
+
+    print(data)
 
     if len(data)>=2:
         for i in range(len(data)-1):
             dt = data[i+1][0] - data[i][0]
             avg_cycle_duration += dt.days
+        
+        last_period_date = data[-1][0]
+        today_date = datetime.datetime.now(datetime.timezone.utc)
+        dt = today_date - last_period_date
+
+        if dt.days <= 5:
+            stage = "menstrual"
+        elif dt.days<=14:
+            stage = "follicular"
+        elif dt.days<=16:
+            stage="ovulation"
+        elif dt.days<=28:
+            stage="luteal"
+            
         avg_cycle_duration = avg_cycle_duration//(len(data)-1)
         next_period_date = data[-1][0] + datetime.timedelta(days=avg_cycle_duration)
         next_period_date = next_period_date.strftime("%A") + " " + next_period_date.strftime("%d") + " " + next_period_date.strftime("%B") + ", " + next_period_date.strftime("%Y")
 
+       
+       
         data.sort(reverse=True)
         for i in range(min(len(data),10)):
             data[i][0] = data[i][0].strftime("%A") + " " + data[i][0].strftime("%d") + " " + data[i][0].strftime("%B") + ", " + data[i][0].strftime("%Y")
             pretty_dates.append(data[i][0])
 
-    today_date = datetime.datetime.now(datetime.timezone.utc)
-    dt = today_date - last_period_date
-    stage = None
-    if dt.days <= 5:
-        stage = "menstrual"
-    elif dt.days<=14:
-        stage = "follicular"
-    elif dt.days<=16:
-        stage="ovulation"
-    elif dt.days<=28:
-        stage="luteal"
+        
+
+    print(stage)
 
 
     context = {
