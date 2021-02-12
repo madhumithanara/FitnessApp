@@ -263,7 +263,7 @@ def cycle(request):
     next_period_date = 0
     pretty_dates = []
 
-    print(data)
+    last_period_date = data[-1][0]
 
     if len(data)>=2:
         for i in range(len(data)-1):
@@ -278,12 +278,25 @@ def cycle(request):
             data[i][0] = data[i][0].strftime("%A") + " " + data[i][0].strftime("%d") + " " + data[i][0].strftime("%B") + ", " + data[i][0].strftime("%Y")
             pretty_dates.append(data[i][0])
 
+    today_date = datetime.now()
+    dt = today_date - last_period_date
+    stage = None
+    if dt.days <= 5:
+        stage = "menstrual"
+    elif dt.days<=14:
+        stage = "follicular"
+    elif dt.days<=16:
+        stage="ovulation"
+    elif dt.days<=28:
+        stage="luteal"
+
 
     context = {
                  "form" : CycleForm(),
                  "avg_cycle_duration": avg_cycle_duration,
                  "next_period_date": next_period_date,
-                 "dates": pretty_dates
+                 "dates": pretty_dates,
+                 "stage": stage
             }
 
     
