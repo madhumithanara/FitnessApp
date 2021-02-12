@@ -263,11 +263,13 @@ def cycle(request):
     next_period_date = 0
     pretty_dates = []
 
+    print(data)
+
     if len(data)>=2:
         for i in range(len(data)-1):
             dt = data[i+1][0] - data[i][0]
             avg_cycle_duration += dt.days
-        avg_cycle_duration = avg_cycle_duration//(len(data))
+        avg_cycle_duration = avg_cycle_duration//(len(data)-1)
         next_period_date = data[-1][0] + datetime.timedelta(days=avg_cycle_duration)
         next_period_date = next_period_date.strftime("%A") + " " + next_period_date.strftime("%d") + " " + next_period_date.strftime("%B") + ", " + next_period_date.strftime("%Y")
 
