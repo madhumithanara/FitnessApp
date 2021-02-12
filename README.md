@@ -52,8 +52,8 @@ YouTube video: https://youtu.be/06Gaq2v74UQ
 
 ## About The Project
 
-  ![image](https://drive.google.com/uc?export=view&id=1y3i5TTj_efi4Rd_yI3V4-DGqA9jZ8_FG)
-
+  ![alt text](https://github.com/madhumithanara/FitnessAppDemo/blob/main/homepage.PNG?raw=true)
+  
 There are many great apps that cater to fitness. But, I believe this app is truly 360.
 
 Here's why:
