@@ -122,7 +122,7 @@ Energy Analysis keeps track of user's calorie intake and burnt, sleep hours and 
 
 Feeling motivated after checking your stats? Pick your choice of exercise, duration and complexity - let's go!
 
-![image](https://drive.google.com/uc?export=view&id=1tzdww9ftfWeqAR2AvJZdieXnfvAXx0af)
+![image](https://drive.google.com/uc?export=view&id=1FZRxNxutT7KOnsAXksisG4CzbwlZcLbx)
 
 The video is embedded!
 ### Health Cycle
