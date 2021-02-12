@@ -84,7 +84,7 @@ import dj_database_url
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'db0jrto506jf20',
+        'NAME': 'postgresql-opaque-22786',
         'USER': 'gzizwoqcvxslgu',
         'PASSWORD': '211b848ff9b1410dbae7edf40e66b1cd87b28fe159dfc5c5106f5db6b8a11709',
         'HOST': 'ec2-34-230-167-186.compute-1.amazonaws.com',
