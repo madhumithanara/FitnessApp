@@ -1,7 +1,7 @@
 # FitnessApp
 
 
-
+YouTube video: https://youtu.be/06Gaq2v74UQ
 
 
 <p align="center">
@@ -124,12 +124,14 @@ Feeling motivated after checking your stats? Pick your choice of exercise, durat
 
 ![image](https://drive.google.com/uc?export=view&id=1tzdww9ftfWeqAR2AvJZdieXnfvAXx0af)
 
+The video is embedded!
 ### Health Cycle
 
 I know how hard it is to keep track of our menstrual cycle, this will help! It calculates your cycle duration (see a doctor if it troubling!) and also predicts the next period date so that you can be ready for it!
 
 ![image](https://drive.google.com/uc?export=view&id=144BvnS7x8pPo0hDnSTudeFvlVZP6u1YH)
-![image](https://drive.google.com/uc?export=view&id=1y3i5TTj_efi4Rd_yI3V4-DGqA9jZ8_FG)
+
+The previous dates are shown at the bottom.
 
 <!-- ROADMAP -->
 ## Roadmap
