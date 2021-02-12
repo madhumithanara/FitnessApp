@@ -257,7 +257,7 @@ def cycle(request):
         temp.append(item.end_date)
         data.append(temp)
 
-    data.sort(reverse=True)
+    data.sort()
 
     avg_cycle_duration = 0
     next_period_date = 0
@@ -271,7 +271,7 @@ def cycle(request):
         next_period_date = data[-1][0] + datetime.timedelta(days=avg_cycle_duration)
         next_period_date = next_period_date.strftime("%A") + " " + next_period_date.strftime("%d") + " " + next_period_date.strftime("%B") + ", " + next_period_date.strftime("%Y")
 
-    
+        data.sort(reverse=True)
         for i in range(min(len(data),10)):
             data[i][0] = data[i][0].strftime("%A") + " " + data[i][0].strftime("%d") + " " + data[i][0].strftime("%B") + ", " + data[i][0].strftime("%Y")
             pretty_dates.append(data[i][0])
