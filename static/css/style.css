@@ -42,9 +42,9 @@ body
   margin-bottom: 100px;
   margin-right: 150px;
   margin-left: 80px;
-  background-image: URL("../img/blurred-background.png");
+  /* background-image: URL("../img/blurred-background.png");
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
   color: black;
   font-family: 'Just Another Hand', sans-serif;
   letter-spacing: 2px;
