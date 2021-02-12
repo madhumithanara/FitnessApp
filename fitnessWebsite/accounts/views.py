@@ -242,7 +242,6 @@ def cycle(request):
         data[i][0] = data[i][0].strftime("%A") + " " + data[i][0].strftime("%d") + " " + data[i][0].strftime("%B") + ", " + data[i][0].strftime("%Y")
         pretty_dates.append(data[i][0])
 
-    print(pretty_dates)
 
     context = {
                  "form" : CycleForm(),

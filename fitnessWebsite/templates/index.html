@@ -18,7 +18,7 @@
 	</ul>
 
   <ul class= "ul-menu">
-    <li class = "li-menu"><a class="li-a-menu" href="">Home</a></li>
+    <li class = "li-menu"><a class="li-a-menu" href="/">Home</a></li>
     <li class = "li-menu"><a class="li-a-menu" href="{% url 'accounts:profile/goals' %}">Health Goals</a></li>
     <li class = "li-menu"><a class="li-a-menu" href="{% url 'accounts:profile/energy_analysis' %}">Energy Analysis</a></li>
     <li class = "li-menu"><a class="li-a-menu" href="{% url 'accounts:profile/workout' %}">Start a Workout</a></li>
@@ -28,7 +28,7 @@
   </ul>
 
   <h1 style = "font-family:Dosis;padding: 10px 10px 10px 10px">Welcome {{ user.username }}!</h1>
-  <a href="{% url 'fitnessTracker:index' %}"><button class="btn-hover color-9">Go to Fitness Tracker Index</button></a>
+
 
   {% else %}
 

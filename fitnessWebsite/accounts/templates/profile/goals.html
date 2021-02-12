@@ -16,7 +16,7 @@
 </ul>
 
 <ul class= "ul-menu">
-    <li class = "li-menu"><a class="li-a-menu" href="">Home</a></li>
+    <li class = "li-menu"><a class="li-a-menu" href="/">Home</a></li>
     <li class = "li-menu"><a class="li-a-menu" href="{% url 'accounts:profile/goals' %}">Health Goals</a></li>
     <li class = "li-menu"><a class="li-a-menu" href="{% url 'accounts:profile/energy_analysis' %}">Energy Analysis</a></li>
     <li class = "li-menu"><a class="li-a-menu" href="{% url 'accounts:profile/workout' %}">Start a Workout</a></li>
@@ -41,7 +41,7 @@
 <form action="/accounts/profile/goals/" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Submit">
+    <input type="submit" class="btn-hover color-6" value="Submit">
 </form>
 
 {% endblock %}
