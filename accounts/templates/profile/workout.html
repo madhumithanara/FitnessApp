@@ -41,8 +41,9 @@
 <iframe width="800" height="500"  src= {{ url }} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </p>
 
-<p style = "text-align: center;"><i>{{ quote }}</i></p>
-<form action="/accounts/profile/workout/" method="post">
+<p style="font-size: x-large;" style = "text-align: center;"><i>{{ quote }}</i></p>
+
+<form style="font-size: xx-large;" action="/accounts/profile/workout/" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" class="btn-hover color-7" value="Submit">

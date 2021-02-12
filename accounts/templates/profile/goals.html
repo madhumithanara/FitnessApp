@@ -34,16 +34,16 @@
 </style>
 
 
-<p style="font-size: large" > Current BMI {{ current_bmi }} <br/>Ideal BMI: {{ ideal_bmi }} </p>
+<p style="font-size: xx-large" > Current BMI {{ current_bmi }} <br/>Ideal BMI: {{ ideal_bmi }} </p>
 
 <img src= "{% static "img/bmi.jpg" %}" alt="Menstrual Cycle Explained" >
 
-<form action="/accounts/profile/goals/" method="post">
+<form style="font-size: xx-large;" action="/accounts/profile/goals/" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" class="btn-hover color-6" value="Submit">
 </form>
 
-<p style="text-align: center;"><i>{{ quote }}</i></p>
+<p style="font-size: x-large;" style="text-align: center;"><i>{{ quote }}</i></p>
 
 {% endblock %}
