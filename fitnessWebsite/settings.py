@@ -143,7 +143,7 @@ STATICFILES_DIRS = (
     os.path.join('accounts','static'),
 )
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # List of finder classes that know how to find static files in
 # various locations.
