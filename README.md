@@ -109,27 +109,27 @@ python manage.py runserver
 
 The health goals page allows you to set your ideal weight and hence, your ideal BMI. Your current BMI is also calculated and stored. The displayed values are incentive for the user to input lower/higher values in order to reach their fitness goal.
 
-![image](https://drive.google.com/uc?export=view&id=1vp1HKUI0oMqZTK-tpjwD2MJZHQiKWaRp)
+![alt text](https://github.com/madhumithanara/FitnessAppDemo/blob/main/goals.PNG?raw=true)
 
 ### Energy Analysis
 
 Energy Analysis keeps track of user's calorie intake and burnt, sleep hours and average resting heart rate. Plots are made on the same for user to analyze their own lifestyle and improve where needed.
 
-![image](https://drive.google.com/uc?export=view&id=1N5GMQmacUDQxpyIS-885KwkF_kJun0J6)
+![alt text](https://github.com/madhumithanara/FitnessAppDemo/blob/main/energy.PNG?raw=true)
 
 
 ### Start Workout
 
 Feeling motivated after checking your stats? Pick your choice of exercise, duration and complexity - let's go!
 
-![image](https://drive.google.com/uc?export=view&id=1FZRxNxutT7KOnsAXksisG4CzbwlZcLbx)
+![alt text](https://github.com/madhumithanara/FitnessAppDemo/blob/main/workout.PNG?raw=true)
 
 The video is embedded!
 ### Health Cycle
 
 I know how hard it is to keep track of our menstrual cycle, this will help! It calculates your cycle duration (see a doctor if it troubling!) and also predicts the next period date so that you can be ready for it!
 
-![image](https://drive.google.com/uc?export=view&id=144BvnS7x8pPo0hDnSTudeFvlVZP6u1YH)
+![alt text](https://github.com/madhumithanara/FitnessAppDemo/blob/main/cycle.PNG?raw=true)
 
 The previous dates are shown at the bottom.
 
